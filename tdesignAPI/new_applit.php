@@ -81,8 +81,8 @@
 			<div class="T_type">
 				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
 				</div>
-				<!--<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/collar.jpg" width="100%" height="100%" />
-				</div>-->
+				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/vending_machine.jpeg" width="100%" height="100%" />
+				</div>
 				<div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
 				</div>
 			</div>
@@ -201,7 +201,7 @@
 		<div id='preview_t'>
 			<div id="preview_front">
 				<div class="front_print">
-
+						<!-- <img src="tdesignAPI/images/product/vending_machine/black/black_front.png" alt=""> -->
 				</div>
 			</div>
 			<div id="preview_back">
@@ -411,6 +411,7 @@
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				image_icon(e.target.result);
+				keepOnTop();
 			}
 
 			reader.readAsDataURL(input.files[0]);
