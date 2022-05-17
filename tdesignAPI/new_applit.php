@@ -79,12 +79,12 @@
 		<!--=============================================================-->
 		<div id='options'>
 			<div class="T_type">
-				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
-				</div>
+				<!-- <div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
+				</div> -->
 				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/vending_machine.jpeg" width="100%" height="100%" />
 				</div>
-				<div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
-				</div>
+				<!-- <div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
+				</div> -->
 			</div>
 
 			<div class="color_pick">
@@ -215,9 +215,9 @@
 		<!--======================view start=======================================-->
 
 		<div id='view_mode'>
-			<div  class="mode"><img id="o_front" src="tdesignAPI/images/product/tee/black/black_front.png" width="100%" height="80%" />FRONT
+			<div  class="mode"><img id="o_front" src="tdesignAPI/images/product/vending_machine/black/black_front.png" width="100%" height="80%" />FRONT
 			</div>
-			<div  class="mode"><img id="o_back" src="tdesignAPI/images/product/tee/black/black_back.png" width="100%" height="80%" />BACK
+			<div  class="mode"><img id="o_back" src="tdesignAPI/images/product/vending_machine/black/black_back.png" width="100%" height="80%" />LEFT
 			</div>
 			<div class="mode">
 				<i class="fa fa-binoculars fa-4x preview_images" id="preview_images" data-toggle="modal" data-target=".bs-example-modal-lg"></i>Preview

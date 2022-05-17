@@ -1,4 +1,4 @@
-var $type = "tee",
+var $type = "vending_machine",
   $color = "black",
   $y_pos = "front",
   $nos_icons = 0,
@@ -382,12 +382,19 @@ function keepOnTop() {
   // if (number > 2) {
   //   $("." + $y_pos + "_print").pop();
   // }
-
-  $("." + $y_pos + "_print").append(
-    "<div id=icon" +
-      number +
-      " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
-  );
+  if ($y_pos == "front") {
+    $("." + $y_pos + "_print").append(
+      "<div id=icon" +
+        number +
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
+    );
+  } else if ($y_pos == "back") {
+    $("." + $y_pos + "_print").append(
+      "<div id=icon" +
+        number +
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_back.png' width='480px' height='490px' /></div>"
+    );
+  }
 
   $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
   // $("#icon" + $nos_icons + "").resizable({
@@ -397,7 +404,6 @@ function keepOnTop() {
   //   minWidth: 60,
   // });
   // $("#icon" + $nos_icons + "").css({ top: "100px", left: "150px" });
-  console.log($("." + $y_pos + "_print"));
 }
 
 function delete_icons(e) {
