@@ -360,19 +360,19 @@ function image_icon($srcimg) {
   $("." + $y_pos + "_print").append(
     "<div id=icon" +
       $nos_icons +
-      " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 10px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
+      " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 10px; object-fit: cover; width: 450px; height: 480px; overflow: hidden; object-position: center;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
       $srcimg +
-      "' width='450px' height='480px' z-index='" +
+      "' width='auto' height='480px' z-index='" +
       $nos_icons +
       "' /></div>"
   );
   $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
-  $("#icon" + $nos_icons + "").resizable({
-    maxHeight: 480,
-    maxWidth: 450,
-    minHeight: 60,
-    minWidth: 60,
-  });
+  // $("#icon" + $nos_icons + "").resizable({
+  //   maxHeight: 480,
+  //   maxWidth: 450,
+  //   minHeight: 60,
+  //   minWidth: 60,
+  // });
   // $("#icon" + $nos_icons + "").css({ top: "100px", left: "150px" });
   ++$nos_icons;
 }

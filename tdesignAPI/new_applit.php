@@ -55,6 +55,9 @@
 	}
 </script>
 <div class="container design_api_container">
+	<div class="logo">
+		<img class="logo-image" src="tdesignAPI/images/logo-smartven.png" alt="logo-smartven">
+	</div>
 	<div class='design_api'>
 		<!--=============================================================-->
 		<div id="menu">
