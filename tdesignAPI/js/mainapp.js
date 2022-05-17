@@ -3,7 +3,9 @@ var $type = "vending_machine",
   $y_pos = "front",
   $nos_icons = 0,
   $nos_text = 0,
-  $custom_img = 0;
+  $custom_img = 0,
+  $number_front = 0,
+  $number_back = 0;
 $(document).ready(function () {
   //ONLOAD
   $("#preview_front").css(
@@ -378,20 +380,26 @@ function image_icon($srcimg) {
 }
 
 function keepOnTop() {
-  var number = $nos_icons + 1;
-  // if (number > 2) {
-  //   $("." + $y_pos + "_print").pop();
-  // }
+  // var number_front = $nos_icons + 1;
+  // var number_back = $nos_icons + 1;
   if ($y_pos == "front") {
+    ++$number_front;
+    if ($number_front > 1) {
+      delete_front_old_icons();
+    }
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
-        number +
+        $number_front +
         " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
     );
   } else if ($y_pos == "back") {
+    ++$number_back;
+    if ($number_back > 1) {
+      delete_back_old_icons();
+    }
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
-        number +
+        $number_back +
         " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_back.png' width='480px' height='490px' /></div>"
     );
   }
@@ -404,6 +412,16 @@ function keepOnTop() {
   //   minWidth: 60,
   // });
   // $("#icon" + $nos_icons + "").css({ top: "100px", left: "150px" });
+}
+
+function delete_front_old_icons() {
+  $(".front_print div:nth-child(2)").remove();
+  $(".front_print div:first-child").remove();
+}
+
+function delete_back_old_icons() {
+  $(".back_print div:nth-child(2)").remove();
+  $(".back_print div:first-child").remove();
 }
 
 function delete_icons(e) {
