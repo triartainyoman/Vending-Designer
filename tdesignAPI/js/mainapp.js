@@ -80,6 +80,23 @@ $(document).ready(function () {
     $type = "hoodie";
     change_it();
   });
+  // New Select
+  $("#vending-select").on("change", function () {
+    // alert(this.value);
+    if (this.value == "smartven_analog") {
+      $type = "vending_machine";
+    } else if (this.value == "smartven_22") {
+      $type = "hoodie";
+    } else if (this.value == "smartven_49") {
+      $type = "tee";
+    }
+    $(".front_print").empty();
+    $(".back_print").empty();
+    $number_front = 0;
+    $number_back = 0;
+    $nos_icons = 0;
+    change_it();
+  });
   /*==========================select type over=====================*/
   /*==========================select back or front=====================*/
   $("#o_front").click(function () {
@@ -390,7 +407,7 @@ function keepOnTop() {
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
         $number_front +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
     );
   } else if ($y_pos == "back") {
     ++$number_back;
@@ -400,7 +417,7 @@ function keepOnTop() {
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
         $number_back +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_back.png' width='480px' height='490px' /></div>"
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_back.png' width='480px' height='490px' /></div>"
     );
   }
 

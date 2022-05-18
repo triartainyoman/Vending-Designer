@@ -58,6 +58,15 @@
 	<div class="logo">
 		<img class="logo-image" src="tdesignAPI/images/logo-smartven.png" alt="logo-smartven">
 	</div>
+	<div>
+		<h3>Kreasikan Vending Machine Anda!</h3>
+		<h5>Tipe</h5>
+		<select name="vending-select" id="vending-select">
+			<option value="smartven_analog">Smartven Analog</option>
+			<option value="smartven_22">Smartven 22</option>
+			<option value="smartven_49">Smartven 49</option>
+		</select>
+	</div>
 	<div class='design_api'>
 		<!--=============================================================-->
 		<div id="menu">
@@ -82,8 +91,8 @@
 		<!--=============================================================-->
 		<div id='options'>
 			<div class="T_type">
-				<!-- <div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
-				</div> -->
+				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
+				</div>
 				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/vending_machine.jpeg" width="100%" height="100%" />
 				</div>
 				<!-- <div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
