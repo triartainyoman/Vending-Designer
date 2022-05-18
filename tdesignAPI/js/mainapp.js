@@ -1,4 +1,4 @@
-var $type = "vending_machine",
+var $type = "smartven_analog",
   $color = "black",
   $y_pos = "front",
   $nos_icons = 0,
@@ -10,28 +10,17 @@ $(document).ready(function () {
   //ONLOAD
   $("#preview_front").css(
     "background-image",
-    "url(tdesignAPI/images/product/" +
-      $type +
-      "/" +
-      $color +
-      "/" +
-      $color +
-      "_front.png) "
+    "url(tdesignAPI/images/product/" + $type + "/" + $type + "_front.png) "
   );
-  $("#preview_back").css(
+  $("#preview_side").css(
     "background-image",
-    "url(tdesignAPI/images/product/" +
-      $type +
-      "/" +
-      $color +
-      "/" +
-      $color +
-      "_back.png) "
+    // "url(tdesignAPI/images/product/" + $type + "/" + $type + "_side.png) "
+    "url(tdesignAPI/images/product/smartven_analog/smartven_analog_side.png) "
   );
-  //$("#preview_front, #preview_back , #preview_left, #preview_right").css('background-color', 'blue') ;
+  //$("#preview_front, #preview_side , #preview_left, #preview_right").css('background-color', 'blue') ;
   $("#preview_front,.T_type").removeClass("dis_none");
   $(
-    "#preview_back,.color_pick,.default_samples,.custom_icon,.custom_font"
+    "#preview_side,.color_pick,.default_samples,.custom_icon,.custom_font"
   ).addClass("dis_none");
   //$('.modal').css('dispaly','none');
 
@@ -67,31 +56,31 @@ $(document).ready(function () {
   /*==========================select type=====================*/
   $("#radio1").click(function () {
     //tee
-    $type = "tee";
+    $type = "smartven_analog";
     change_it();
   });
   $("#radio2").click(function () {
     //vending_machine
-    $type = "vending_machine";
+    $type = "smartven_22";
     change_it();
   });
   $("#radio3").click(function () {
     //hoodie
-    $type = "hoodie";
+    $type = "smartven_49";
     change_it();
   });
   // New Select
   $("#vending-select").on("change", function () {
     // alert(this.value);
     if (this.value == "smartven_analog") {
-      $type = "vending_machine";
+      $type = "smartven_analog";
     } else if (this.value == "smartven_22") {
-      $type = "hoodie";
+      $type = "smartven_22";
     } else if (this.value == "smartven_49") {
-      $type = "tee";
+      $type = "smartven_49";
     }
     $(".front_print").empty();
-    $(".back_print").empty();
+    $(".side_print").empty();
     $number_front = 0;
     $number_back = 0;
     $nos_icons = 0;
@@ -106,71 +95,43 @@ $(document).ready(function () {
       "url(tdesignAPI/images/product/" +
         $type +
         "/" +
-        $color +
-        "/" +
-        $color +
+        $type +
         "_" +
         $y_pos +
         ".png) "
     );
     $("#o_front").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_front.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
     );
     $("#o_back").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_back.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
     );
     $("#preview_front").removeClass("dis_none");
-    $("#preview_back").addClass("dis_none");
+    $("#preview_side").addClass("dis_none");
   });
   $("#o_back").click(function () {
-    $y_pos = "back";
-    $("#preview_back").css(
+    $y_pos = "side";
+    $("#preview_side").css(
       "background-image",
       "url(tdesignAPI/images/product/" +
         $type +
         "/" +
-        $color +
-        "/" +
-        $color +
+        $type +
         "_" +
         $y_pos +
         ".png) "
     );
     $("#o_front").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_front.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
     );
     $("#o_back").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_back.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
     );
-    $("#preview_back").removeClass("dis_none");
+    $("#preview_side").removeClass("dis_none");
     $("#preview_front").addClass("dis_none");
   });
   /*==========================select back or front OVER=====================*/
@@ -196,45 +157,21 @@ $(document).ready(function () {
     change_it();
   });
   function change_it() {
-    $("#preview_back").css(
+    $("#preview_side").css(
       "background-image",
-      "url(tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_back.png) "
+      "url(tdesignAPI/images/product/" + $type + "/" + $type + "_side.png) "
     );
     $("#preview_front").css(
       "background-image",
-      "url(tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_front.png) "
+      "url(tdesignAPI/images/product/" + $type + "/" + $type + "_front.png) "
     );
     $("#o_front").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_front.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
     );
     $("#o_back").attr(
       "src",
-      "tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $color +
-        "/" +
-        $color +
-        "_back.png"
+      "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
     );
   }
   /*==========================select COLOR OVER=====================*/
@@ -347,7 +284,7 @@ function getContentDiagonal() {
   });
 
   function capture() {
-    $("#preview_back").removeClass("dis_none");
+    $("#preview_side").removeClass("dis_none");
     $("#preview_front").removeClass("dis_none");
     $("#image_reply").empty();
     $y_pos = "front";
@@ -359,13 +296,13 @@ function getContentDiagonal() {
       },
     });
     //$('#preview_front').hide();
-    //$('#preview_back').show();
-    html2canvas($("#preview_back"), {
+    //$('#preview_side').show();
+    html2canvas($("#preview_side"), {
       onrendered: function (canvas) {
         //$('#img_back').val(canvas.toDataURL("image/png"));
         document.getElementById("image_reply").appendChild(canvas);
         $("#img_back").val(canvas.toDataURL("image/png"));
-        $("#preview_back").addClass("dis_none");
+        $("#preview_side").addClass("dis_none");
       },
     });
   }
@@ -407,9 +344,13 @@ function keepOnTop() {
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
         $number_front +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_front.png' width='480px' height='490px' /></div>"
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/" +
+        $type +
+        "/" +
+        $type +
+        "_front.png' width='480px' height='490px' /></div>"
     );
-  } else if ($y_pos == "back") {
+  } else if ($y_pos == "side") {
     ++$number_back;
     if ($number_back > 1) {
       delete_back_old_icons();
@@ -417,7 +358,11 @@ function keepOnTop() {
     $("." + $y_pos + "_print").append(
       "<div id=icon" +
         $number_back +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/vending_machine/black/black_back.png' width='480px' height='490px' /></div>"
+        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top: 0px; left: 0px; pointer-events: none;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='tdesignAPI/images/product/" +
+        $type +
+        "/" +
+        $type +
+        "_side.png' width='480px' height='490px' /></div>"
     );
   }
 
@@ -437,8 +382,8 @@ function delete_front_old_icons() {
 }
 
 function delete_back_old_icons() {
-  $(".back_print div:nth-child(2)").remove();
-  $(".back_print div:first-child").remove();
+  $(".side_print div:nth-child(2)").remove();
+  $(".side_print div:first-child").remove();
 }
 
 function delete_icons(e) {

@@ -91,12 +91,12 @@
 		<!--=============================================================-->
 		<div id='options'>
 			<div class="T_type">
-				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/tee.jpg" width="100%" height="100%" />
+				<div id="radio1" ><img src="tdesignAPI/images/menu_icons/submenu/smartven_analog.jpg" width="100%" height="100%" />
 				</div>
-				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/vending_machine.jpeg" width="100%" height="100%" />
+				<div id="radio2" ><img src="tdesignAPI/images/menu_icons/submenu/smartven_22.jpeg" width="100%" height="100%" />
 				</div>
-				<!-- <div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/hoodie.jpg" width="100%" height="100%" />
-				</div> -->
+				<div id="radio3" ><img src="tdesignAPI/images/menu_icons/submenu/smartven_49.jpeg" width="100%" height="100%" />
+				</div>
 			</div>
 
 			<div class="color_pick">
@@ -216,8 +216,8 @@
 						<!-- <img src="tdesignAPI/images/product/vending_machine/black/black_front.png" alt=""> -->
 				</div>
 			</div>
-			<div id="preview_back">
-				<div class="back_print">
+			<div id="preview_side">
+				<div class="side_print">
 
 				</div>
 			</div>
@@ -227,9 +227,9 @@
 		<!--======================view start=======================================-->
 
 		<div id='view_mode'>
-			<div  class="mode"><img id="o_front" src="tdesignAPI/images/product/vending_machine/black/black_front.png" width="100%" height="80%" />FRONT
+			<div  class="mode"><img id="o_front" src="tdesignAPI/images/product/smartven_analog/smartven_analog_front.png" width="100%" height="80%" />FRONT
 			</div>
-			<div  class="mode"><img id="o_back" src="tdesignAPI/images/product/vending_machine/black/black_back.png" width="100%" height="80%" />LEFT
+			<div  class="mode"><img id="o_back" src="tdesignAPI/images/product/smartven_analog/smartven_analog_side.png" width="100%" height="80%" />SIDE
 			</div>
 			<div class="mode">
 				<i class="fa fa-binoculars fa-4x preview_images" id="preview_images" data-toggle="modal" data-target=".bs-example-modal-lg"></i>Preview

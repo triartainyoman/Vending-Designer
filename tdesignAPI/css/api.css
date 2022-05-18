@@ -272,7 +272,7 @@ div.upload input {
   border-top: 1px solid #acacac;
 }
 #preview_front,
-#preview_back {
+#preview_side {
   height: 510px;
   width: 480px;
   background-repeat: no-repeat;
@@ -288,7 +288,7 @@ div.upload input {
   transition: all 0.5s ease;
 }
 .front_print,
-.back_print {
+.side_print {
   width: 470px;
   height: 500px;
   /* //border:1px solid #acacac; */
