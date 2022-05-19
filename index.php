@@ -7,14 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TalkInTee</title>
+    <title>Custom Vending - Smartven</title>
 		
-	<link href="css/normalize.css" rel="stylesheet">
+		<link href="css/normalize.css" rel="stylesheet">
+		<link rel="icon" sizes="192x192" href="tdesignAPI/images/smartven_favicon.png">
 	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    
+		<!-- Jquery -->
 		<script src="js/jquery-1.10.2.js">	</script>
 		<script src="js/bootstrap.js">		</script>
 		

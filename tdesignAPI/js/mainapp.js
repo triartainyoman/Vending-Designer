@@ -55,17 +55,14 @@ $(document).ready(function () {
   /*=========================SWITCH MENU OVER=====================*/
   /*==========================select type=====================*/
   $("#radio1").click(function () {
-    //tee
     $type = "smartven_analog";
     change_it();
   });
   $("#radio2").click(function () {
-    //vending_machine
     $type = "smartven_22";
     change_it();
   });
   $("#radio3").click(function () {
-    //hoodie
     $type = "smartven_49";
     change_it();
   });
@@ -86,76 +83,169 @@ $(document).ready(function () {
     $nos_icons = 0;
     change_it();
   });
+
+  // Custom Select
+  const selector = document.querySelector(".custom-select");
+
+  selector.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+
+    const select = selector.children[0];
+    const dropDown = document.createElement("ul");
+    dropDown.className = "select-options";
+
+    [...select.children].forEach((option) => {
+      const dropDownOption = document.createElement("li");
+      dropDownOption.textContent = option.textContent;
+
+      dropDownOption.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        select.value = option.value;
+        selector.value = option.value;
+        select.dispatchEvent(new Event("change"));
+        selector.dispatchEvent(new Event("change"));
+        dropDown.remove();
+        selector.style.setProperty("--border-top-color", "#343434");
+        selector.style.setProperty("--border-bottom-color", "transparent");
+        selector.style.setProperty("--bottom", "24px");
+      });
+
+      dropDown.appendChild(dropDownOption);
+      selector.style.setProperty("--border-top-color", "transparent");
+      selector.style.setProperty("--border-bottom-color", "#343434");
+      selector.style.setProperty("--bottom", "30px");
+    });
+
+    selector.appendChild(dropDown);
+
+    // click out
+    document.addEventListener("click", (e) => {
+      if (!selector.contains(e.target)) {
+        selector.style.setProperty("--border-top-color", "#343434");
+        selector.style.setProperty("--border-bottom-color", "transparent");
+        selector.style.setProperty("--bottom", "24px");
+        dropDown.remove();
+      }
+    });
+  });
+  // End Custom Select
   /*==========================select type over=====================*/
   /*==========================select back or front=====================*/
-  $("#o_front").click(function () {
-    $y_pos = "front";
-    $("#preview_front").css(
-      "background-image",
-      "url(tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $type +
-        "_" +
-        $y_pos +
-        ".png) "
-    );
-    $("#o_front").attr(
-      "src",
-      "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
-    );
-    $("#o_back").attr(
-      "src",
-      "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
-    );
-    $("#preview_front").removeClass("dis_none");
-    $("#preview_side").addClass("dis_none");
+  // $("#o_front").click(function () {
+  //   $y_pos = "front";
+  //   $("#preview_front").css(
+  //     "background-image",
+  //     "url(tdesignAPI/images/product/" +
+  //       $type +
+  //       "/" +
+  //       $type +
+  //       "_" +
+  //       $y_pos +
+  //       ".png) "
+  //   );
+  //   $("#o_front").attr(
+  //     "src",
+  //     "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
+  //   );
+  //   $("#o_back").attr(
+  //     "src",
+  //     "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
+  //   );
+  //   $("#preview_front").removeClass("dis_none");
+  //   $("#preview_side").addClass("dis_none");
+  // });
+  // $("#o_back").click(function () {
+  //   $y_pos = "side";
+  //   $("#preview_side").css(
+  //     "background-image",
+  //     "url(tdesignAPI/images/product/" +
+  //       $type +
+  //       "/" +
+  //       $type +
+  //       "_" +
+  //       $y_pos +
+  //       ".png) "
+  //   );
+  //   $("#o_front").attr(
+  //     "src",
+  //     "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
+  //   );
+  //   $("#o_back").attr(
+  //     "src",
+  //     "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
+  //   );
+  //   $("#preview_side").removeClass("dis_none");
+  //   $("#preview_front").addClass("dis_none");
+  // });
+
+  // Switch Button Depan Samping
+  const switchButton = document.getElementById("switch-button");
+
+  switchButton.addEventListener("change", (e) => {
+    console.log(e.target.checked);
+
+    if (e.target.checked == false) {
+      $y_pos = "front";
+      $("#preview_front").css(
+        "background-image",
+        "url(tdesignAPI/images/product/" +
+          $type +
+          "/" +
+          $type +
+          "_" +
+          $y_pos +
+          ".png) "
+      );
+      $("#o_front").attr(
+        "src",
+        "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
+      );
+      $("#o_back").attr(
+        "src",
+        "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
+      );
+      $("#preview_front").removeClass("dis_none");
+      $("#preview_side").addClass("dis_none");
+
+      $(".preview-title").text("Tampak Depan");
+
+      setTimeout(() => {
+        switchButton.style.setProperty("--switch-front-color", "white");
+        switchButton.style.setProperty("--switch-side-color", "black");
+      }, 100);
+    } else if (e.target.checked == true) {
+      $y_pos = "side";
+      $("#preview_side").css(
+        "background-image",
+        "url(tdesignAPI/images/product/" +
+          $type +
+          "/" +
+          $type +
+          "_" +
+          $y_pos +
+          ".png) "
+      );
+      $("#o_front").attr(
+        "src",
+        "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
+      );
+      $("#o_back").attr(
+        "src",
+        "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
+      );
+      $("#preview_side").removeClass("dis_none");
+      $("#preview_front").addClass("dis_none");
+
+      $(".preview-title").text("Tampak Samping");
+
+      setTimeout(() => {
+        switchButton.style.setProperty("--switch-side-color", "white");
+        switchButton.style.setProperty("--switch-front-color", "black");
+      }, 100);
+    }
   });
-  $("#o_back").click(function () {
-    $y_pos = "side";
-    $("#preview_side").css(
-      "background-image",
-      "url(tdesignAPI/images/product/" +
-        $type +
-        "/" +
-        $type +
-        "_" +
-        $y_pos +
-        ".png) "
-    );
-    $("#o_front").attr(
-      "src",
-      "tdesignAPI/images/product/" + $type + "/" + $type + "_front.png"
-    );
-    $("#o_back").attr(
-      "src",
-      "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
-    );
-    $("#preview_side").removeClass("dis_none");
-    $("#preview_front").addClass("dis_none");
-  });
+
   /*==========================select back or front OVER=====================*/
-  /*==========================select COLOR=====================*/
-  $("#red").click(function () {
-    $color = "red";
-    change_it();
-  });
-  $("#black").click(function () {
-    $color = "black";
-    change_it();
-  });
-  $("#white").click(function () {
-    $color = "white";
-    change_it();
-  });
-  $("#green").click(function () {
-    $color = "green";
-    change_it();
-  });
-  $("#navy").click(function () {
-    $color = "navy";
-    change_it();
-  });
   function change_it() {
     $("#preview_side").css(
       "background-image",
@@ -174,7 +264,7 @@ $(document).ready(function () {
       "tdesignAPI/images/product/" + $type + "/" + $type + "_side.png"
     );
   }
-  /*==========================select COLOR OVER=====================*/
+
   /*=====================SAMPLE ICONS========================*/
   $(".sample_icons").click(function () {
     var $srcimg = $(this).children("img").attr("src");
@@ -195,77 +285,6 @@ $(document).ready(function () {
   });
   /*=====================SAMPLE ICONS over========================*/
 
-  /*
- * Font resiZable
- * 
- * 
- * 
- *
-var initDiagonal;
-var initFontSize;
-
-$(function() {
-    $("#resizable").resizable({
-        alsoResize: '#content',
-        create: function(event, ui) {
-            initDiagonal = getContentDiagonal();
-            initFontSize = parseInt($("#content").css("font-size"));
-        },
-        resize: function(e, ui) {
-            var newDiagonal = getContentDiagonal();
-            var ratio = newDiagonal / initDiagonal;
-            
-            $("#content").css("font-size", initFontSize + ratio * 3);
-        }
-    });
-});
-
-function getContentDiagonal() {
-    var contentWidth = $("#content").width();
-    var contentHeight = $("#content").height();
-    return contentWidth * contentWidth + contentHeight * contentHeight;
-}
-/*
- * 
- * 
- * 
- */
-
-  $("#apply_text").click(function () {
-    var text_val = jQuery("textarea#custom_text").val();
-    if (!text_val) return false;
-
-    $("." + $y_pos + "_print").append(
-      "<div id=text" +
-        $nos_text +
-        " class='new_text'  onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);'><span class='drag_text property_icon'  ></span><textarea id='text_style' >" +
-        text_val +
-        "</textarea><span class='delete_text property_icon' onClick='delete_text(this);' ></span></div>"
-    );
-    $("#text" + $nos_text + "").draggable({ containment: "parent" });
-    $("#text" + $nos_text + "").resizable({
-      maxHeight: 480,
-      maxWidth: 450,
-      minHeight: 60,
-      minWidth: 60,
-    });
-
-    var $font_ = $("#custom_text").css("font-family");
-    var $font_size = $("#custom_text").css("font-size");
-    var $font_weight = $("#custom_text").css("font-weight");
-    var $font_style = $("#custom_text").css("font-style");
-    var $font_color = $("#custom_text").css("color");
-    //alert($font_u);
-
-    $("#text" + $nos_text + " textarea").css("font-family", $font_);
-    $("#text" + $nos_text + " textarea").css("font-size", $font_size);
-    $("#text" + $nos_text + " textarea").css("font-weight", $font_weight);
-    $("#text" + $nos_text + " textarea").css("font-style", $font_style);
-    $("#text" + $nos_text + " textarea").css("color", $font_color);
-    $("#text" + $nos_text).css({ top: "100px", left: "150px" });
-    //document.getElementById("text"+($nos_text)+" textarea").style.textDecoration=(""+$font_u+"");
-    ++$nos_text;
-  });
   $(".preview_images").click(function () {
     capture();
     //$('.modal').addClass('in');
@@ -309,20 +328,16 @@ function getContentDiagonal() {
 });
 
 function image_icon($srcimg) {
-  // if ($nos_icons > 0) {
-  //   $("." + $y_pos + "_print").pop();
-  // }
-
   $("." + $y_pos + "_print").append(
     "<div id=icon" +
       $nos_icons +
-      " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 10px; object-fit: cover; width: 450px; height: 480px; overflow: hidden; object-position: center;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
+      " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; object-fit: cover; width: 310px; height: 430px; overflow: hidden; object-position: center;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
       $srcimg +
-      "' width='auto' height='480px' z-index='" +
+      "' width='auto' height='430px' z-index='" +
       $nos_icons +
       "' /></div>"
   );
-  $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
+  // $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
   // $("#icon" + $nos_icons + "").resizable({
   //   maxHeight: 480,
   //   maxWidth: 450,
@@ -348,7 +363,7 @@ function keepOnTop() {
         $type +
         "/" +
         $type +
-        "_front.png' width='480px' height='490px' /></div>"
+        "_front.png' width='310px' height='430px' /></div>"
     );
   } else if ($y_pos == "side") {
     ++$number_back;
@@ -362,7 +377,7 @@ function keepOnTop() {
         $type +
         "/" +
         $type +
-        "_side.png' width='480px' height='490px' /></div>"
+        "_side.png' width='310px' height='430px' /></div>"
     );
   }
 
@@ -416,12 +431,12 @@ function readURL(input) {
           "' width='100%' height='100%' /></div>"
       );
       $("#c_icon" + $custom_img + "").draggable({ containment: "parent" });
-      $("#c_icon" + $custom_img + "").resizable({
-        maxHeight: 480,
-        maxWidth: 450,
-        minHeight: 60,
-        minWidth: 60,
-      });
+      // $("#c_icon" + $custom_img + "").resizable({
+      //   maxHeight: 430,
+      //   maxWidth: 310,
+      //   minHeight: 60,
+      //   minWidth: 60,
+      // });
 
       $("#c_img" + $custom_img + "").attr("src", e.target.result);
       ++$custom_img;
