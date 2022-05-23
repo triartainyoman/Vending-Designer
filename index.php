@@ -18,6 +18,9 @@
 		<!-- Jquery -->
 		<script src="js/jquery-1.10.2.js">	</script>
 		<script src="js/bootstrap.js">		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/utils/Draggable.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/TweenMax.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		
 		<style>
 

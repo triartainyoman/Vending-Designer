@@ -76,7 +76,14 @@
 					<span class="btn btn-file btn-upload">
 						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
 						Unggah Gambar
-						<input type='file' id="imgInp" />
+						<input type='file' id="imgInp" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
+					</span>
+				</form>
+				<form id="form2" runat="server">
+					<span class="btn btn-file btn-upload">
+						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
+						Unggah Gambar
+						<input type='file' id="imgInp2" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
 					</span>
 				</form>
 			</div>
@@ -118,11 +125,12 @@
 		</div>
 		
 		<!-- Right -->
-		<div class="col-md-4" style="height: 430px; display: flex; align-items: center;">
+		<div class="col-md-4" style="height: 430px; display: flex; flex-direction: column; justify-content: center;">
 			<button type="button" class="btn-preview-images preview_images" id="preview_images" data-toggle="modal" data-target=".bs-example-modal-lg">
 					<img src="tdesignAPI/images/icons/icon_tinjau.png" alt="Icon Tinjau">
 					Pratinjau 
 			</button>
+			<p style="color: red; margin-top: 5px" id="error_tinjau"></p>
 		</div>
 	</div>
 
@@ -137,7 +145,7 @@
 			<div class="modal-body">
 
 				<div id="image_reply" style="display: flex; justify-content: space-evenly;"></div>
-				<div style="display: flex; justify-content: center;">
+				<div style="display: flex; justify-content: center;" id="image_reply_desc">
 					<h3 style="margin-right: 25%;">Tampak Depan</h3>
 					<h3>Tampak Samping</h3>
 				</div>
@@ -172,6 +180,10 @@
 	}
 
 	$("#imgInp").change(function() {
+		readURL(this);
+	});
+
+	$("#imgInp2").change(function() {
 		readURL(this);
 	});
 </script>

@@ -5,6 +5,8 @@ var $type = "smartven_analog",
   $nos_text = 0,
   $custom_img = 0,
   $number_front = 0,
+  $upload_front = false,
+  $upload_side = false,
   $number_back = 0;
 $(document).ready(function () {
   //ONLOAD
@@ -181,9 +183,10 @@ $(document).ready(function () {
   // Switch Button Depan Samping
   const switchButton = document.getElementById("switch-button");
 
-  switchButton.addEventListener("change", (e) => {
-    console.log(e.target.checked);
+  $("#form1").show();
+  $("#form2").hide();
 
+  switchButton.addEventListener("change", (e) => {
     if (e.target.checked == false) {
       $y_pos = "front";
       $("#preview_front").css(
@@ -213,6 +216,9 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-front-color", "white");
         switchButton.style.setProperty("--switch-side-color", "black");
       }, 100);
+
+      $("#form1").show();
+      $("#form2").hide();
     } else if (e.target.checked == true) {
       $y_pos = "side";
       $("#preview_side").css(
@@ -242,6 +248,9 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-side-color", "white");
         switchButton.style.setProperty("--switch-front-color", "black");
       }, 100);
+
+      $("#form1").hide();
+      $("#form2").show();
     }
   });
 
@@ -286,20 +295,42 @@ $(document).ready(function () {
   /*=====================SAMPLE ICONS over========================*/
 
   $(".preview_images").click(function () {
-    capture();
-    //$('.modal').addClass('in');
-    $(".layer").css("visibility", "visible");
-    //$('.layer').css('visibility','visible');
-    //$('body').css('position','fixed');
-    //$('.modal').css({'display':'block','height':'auto'});
-    //$('.design_api').css('position', 'fixed');
-    //$('.modal').css('overflow', 'scroll');
+    if ($upload_front == true && $upload_side == true) {
+      var element = $("#wrapperIcon");
+      element.css("overflow", "visible");
+
+      var element2 = $("#wrapperIconTwo");
+      element2.css("overflow", "visible");
+
+      // Switch Vending Frame
+      $(".switch-button-checkbox").prop("checked", false);
+      setTimeout(() => {
+        switchButton.style.setProperty("--switch-front-color", "white");
+        switchButton.style.setProperty("--switch-side-color", "black");
+      }, 100);
+
+      capture();
+      $(".layer").css("visibility", "visible");
+
+      $("#form1").show();
+      $("#form2").hide();
+    } else {
+      $("#error_tinjau").html(
+        "<i>Anda belum menggungah gambar tampak depan atau samping!</i>"
+      );
+    }
   });
 
   $(".close_img").click(function () {
+    var element = $("#wrapperIcon");
+    element.css("overflow", "hidden");
+
+    var element2 = $("#wrapperIconTwo");
+    element2.css("overflow", "hidden");
+
+    $("#error_tinjau").html("");
+
     $(".layer").css("visibility", "hidden");
-    //$('.layer').css('visibility','hidden');
-    //$('body').css('position','relative');
   });
 
   function capture() {
@@ -310,15 +341,11 @@ $(document).ready(function () {
     html2canvas($("#preview_front"), {
       onrendered: function (canvas) {
         document.getElementById("image_reply").appendChild(canvas);
-        //Set hidden field's value to image data (base-64 string)
         $("#img_front").val(canvas.toDataURL("image/png"));
       },
     });
-    //$('#preview_front').hide();
-    //$('#preview_side').show();
     html2canvas($("#preview_side"), {
       onrendered: function (canvas) {
-        //$('#img_back').val(canvas.toDataURL("image/png"));
         document.getElementById("image_reply").appendChild(canvas);
         $("#img_back").val(canvas.toDataURL("image/png"));
         $("#preview_side").addClass("dis_none");
@@ -339,24 +366,38 @@ function image_icon($srcimg) {
   // );
   if ($y_pos == "front") {
     $("." + $y_pos + "_print").append(
-      "<div id=icon" +
-        $nos_icons +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; object-fit: cover; width: 310px; height: 430px; overflow: hidden; object-position: center;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
+      "<div id='wrapperIcon' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; width: 305px; height: 425px; overflow: hidden;'><img id='map' src='" +
         $srcimg +
-        "' width='auto' height='430px' z-index='" +
-        $nos_icons +
-        "' /></div>"
+        "' width='auto' height='430px' z-index='0' /></div>"
     );
+    $upload_front = true;
+    // Draggable Upload Image
+    Draggable.create("#map", {
+      type: "x",
+      bounds: "#wrapperIcon",
+      edgeResistance: 0.5,
+      onRelease: function () {
+        TweenLite.set(this.target, { zIndex: 0 });
+      },
+    });
   } else {
     $("." + $y_pos + "_print").append(
-      "<div id=icon" +
-        $nos_icons +
-        " class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; object-fit: cover; width: 310px; height: 430px; overflow: hidden; object-position: center;'><span class='delete_icon property_icon' onClick='delete_icons(this);'></span><img src='" +
+      "<div id='wrapperIconTwo' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; width: 305px; height: 425px; overflow: hidden;'><img id='mapTwo' src='" +
         $srcimg +
         "' width='auto' height='430px' z-index='" +
         $nos_icons +
         "' /></div>"
     );
+    $upload_side = true;
+    // Draggable Upload Image
+    Draggable.create("#mapTwo", {
+      type: "x",
+      bounds: "#wrapperIconTwo",
+      edgeResistance: 0.5,
+      onRelease: function () {
+        TweenLite.set(this.target, { zIndex: 0 });
+      },
+    });
   }
   // $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
   // $("#icon" + $nos_icons + "").resizable({
@@ -386,6 +427,15 @@ function keepOnTop() {
         $type +
         "_front.png' width='310px' height='430px' /></div>"
     );
+    // Draggable Upload Image
+    Draggable.create("#map", {
+      type: "x",
+      bounds: "#wrapperIcon",
+      edgeResistance: 0.5,
+      onRelease: function () {
+        TweenLite.set(this.target, { zIndex: 0 });
+      },
+    });
   } else if ($y_pos == "side") {
     ++$number_back;
     if ($number_back > 1) {
@@ -400,6 +450,15 @@ function keepOnTop() {
         $type +
         "_side.png' width='310px' height='430px' /></div>"
     );
+    // Draggable Upload Image
+    Draggable.create("#mapTwo", {
+      type: "x",
+      bounds: "#wrapperIconTwo",
+      edgeResistance: 0.5,
+      onRelease: function () {
+        TweenLite.set(this.target, { zIndex: 0 });
+      },
+    });
   }
 
   $("#icon" + $nos_icons + "").draggable({ containment: "parent" });
@@ -440,28 +499,39 @@ function delete_text(f) {
   --$nos_icons;
 }
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      $("." + $y_pos + "_print").append(
-        "<div id='c_icon" +
-          $custom_img +
-          "' class='new_icon'><span class='delete_icon' onClick='delete_icons(this);' ></span><img src='#' id='c_img" +
-          $custom_img +
-          "' width='100%' height='100%' /></div>"
-      );
-      $("#c_icon" + $custom_img + "").draggable({ containment: "parent" });
-      // $("#c_icon" + $custom_img + "").resizable({
-      //   maxHeight: 430,
-      //   maxWidth: 310,
-      //   minHeight: 60,
-      //   minWidth: 60,
-      // });
-
-      $("#c_img" + $custom_img + "").attr("src", e.target.result);
-      ++$custom_img;
-    };
-    reader.readAsDataURL(input.files[0]);
+function validateFileType() {
+  var fileName = document.getElementById("imgInp").value;
+  var idxDot = fileName.lastIndexOf(".") + 1;
+  var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+  if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+    console.log("Success Upload");
+  } else {
+    alert("Only jpg/jpeg and png files are allowed!");
   }
 }
+
+// function readURL(input) {
+//   if (input.files && input.files[0]) {
+//     var reader = new FileReader();
+//     reader.onload = function (e) {
+//       $("." + $y_pos + "_print").append(
+//         "<div id='c_icon" +
+//           $custom_img +
+//           "' class='new_icon'><span class='delete_icon' onClick='delete_icons(this);' ></span><img src='#' id='c_img" +
+//           $custom_img +
+//           "' width='100%' height='100%' /></div>"
+//       );
+//       $("#c_icon" + $custom_img + "").draggable({ containment: "parent" });
+//       // $("#c_icon" + $custom_img + "").resizable({
+//       //   maxHeight: 430,
+//       //   maxWidth: 310,
+//       //   minHeight: 60,
+//       //   minWidth: 60,
+//       // });
+
+//       $("#c_img" + $custom_img + "").attr("src", e.target.result);
+//       ++$custom_img;
+//     };
+//     reader.readAsDataURL(input.files[0]);
+//   }
+// }

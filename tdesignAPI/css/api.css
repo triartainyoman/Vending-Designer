@@ -239,12 +239,12 @@ div.upload input {
   display: none;
 }
 
-.new_icon:hover,
+/* .new_icon:hover,
 .new_text:hover,
 .new_icon:active,
 .new_text:active {
   border: 1px solid #777;
-}
+} */
 #fs {
   width: 100px;
 }
@@ -714,4 +714,40 @@ h5 {
 .switch-button-checkbox + .switch-button-label .switch-button-label-span {
   position: relative;
   font-weight: 500;
+}
+
+/* Upload Image */
+/* #map {
+  position: relative;
+}
+
+#map img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0 none transparent;
+  z-index: inherit !important;
+} */
+#wrapperIcon {
+  position: relative;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0 none transparent;
+  z-index: inherit !important;
+}
+
+#wrapperIconTwo {
+  position: relative;
+}
+
+#mapTwo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0 none transparent;
+  z-index: inherit !important;
 }
