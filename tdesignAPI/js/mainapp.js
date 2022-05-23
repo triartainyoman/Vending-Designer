@@ -183,8 +183,8 @@ $(document).ready(function () {
   // Switch Button Depan Samping
   const switchButton = document.getElementById("switch-button");
 
-  $("#form1").show();
-  $("#form2").hide();
+  document.getElementById("form1").style.display = "block";
+  document.getElementById("form2").style.display = "none";
 
   switchButton.addEventListener("change", (e) => {
     if (e.target.checked == false) {
@@ -217,8 +217,8 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-side-color", "black");
       }, 100);
 
-      $("#form1").show();
-      $("#form2").hide();
+      document.getElementById("form1").style.display = "block";
+      document.getElementById("form2").style.display = "none";
     } else if (e.target.checked == true) {
       $y_pos = "side";
       $("#preview_side").css(
@@ -249,8 +249,8 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-front-color", "black");
       }, 100);
 
-      $("#form1").hide();
-      $("#form2").show();
+      document.getElementById("form1").style.display = "none";
+      document.getElementById("form2").style.display = "block";
     }
   });
 
@@ -312,8 +312,8 @@ $(document).ready(function () {
       capture();
       $(".layer").css("visibility", "visible");
 
-      $("#form1").show();
-      $("#form2").hide();
+      document.getElementById("form1").style.display = "block";
+      document.getElementById("form2").style.display = "none";
     } else {
       $("#error_tinjau").html(
         "<i>Anda belum menggungah gambar tampak depan atau samping!</i>"
