@@ -187,8 +187,8 @@ $(document).ready(function () {
   // Switch Button Depan Samping
   const switchButton = document.getElementById("switch-button");
 
-  // document.getElementById("form1").style.display = "block";
-  // document.getElementById("form2").style.display = "none";
+  document.getElementById("form1").style.display = "block";
+  document.getElementById("form2").style.display = "none";
 
   // Disabled Upload
   document.getElementById("unggah_depan").setAttribute("enabled", "");
@@ -228,8 +228,8 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-side-color", "black");
       }, 100);
 
-      // document.getElementById("form1").style.display = "block";
-      // document.getElementById("form2").style.display = "none";
+      document.getElementById("form1").style.display = "block";
+      document.getElementById("form2").style.display = "none";
 
       // Disabled Upload
       document.getElementById("unggah_depan").setAttribute("enabled", "");
@@ -270,8 +270,8 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-front-color", "black");
       }, 100);
 
-      // document.getElementById("form1").style.display = "none";
-      // document.getElementById("form2").style.display = "block";
+      document.getElementById("form1").style.display = "none";
+      document.getElementById("form2").style.display = "block";
 
       // Disabled Upload
       document.getElementById("unggah_depan").setAttribute("disabled", "");
@@ -340,8 +340,8 @@ $(document).ready(function () {
       capture();
       $(".layer").css("visibility", "visible");
 
-      // document.getElementById("form1").style.display = "block";
-      // document.getElementById("form2").style.display = "none";
+      document.getElementById("form1").style.display = "block";
+      document.getElementById("form2").style.display = "none";
 
       // Disabled Upload
       document.getElementById("unggah_depan").setAttribute("enabled", "");
@@ -544,6 +544,6 @@ function validateFileType() {
   if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
     console.log("Success Upload");
   } else {
-    alert("Only jpg/jpeg and png files are allowed!");
+    // alert("Only jpg/jpeg and png files are allowed!");
   }
 }
