@@ -110,6 +110,10 @@ $(document).ready(function () {
         selector.style.setProperty("--border-top-color", "#343434");
         selector.style.setProperty("--border-bottom-color", "transparent");
         selector.style.setProperty("--bottom", "24px");
+
+        // Update
+        $upload_front = false;
+        $upload_side = false;
       });
 
       dropDown.appendChild(dropDownOption);
@@ -183,11 +187,18 @@ $(document).ready(function () {
   // Switch Button Depan Samping
   const switchButton = document.getElementById("switch-button");
 
-  document.getElementById("form1").style.display = "block";
-  document.getElementById("form2").style.display = "none";
+  // document.getElementById("form1").style.display = "block";
+  // document.getElementById("form2").style.display = "none";
+
+  // Disabled Upload
+  document.getElementById("unggah_depan").setAttribute("enabled", "");
+  document.getElementById("unggah_samping").setAttribute("disabled", "");
 
   switchButton.addEventListener("change", (e) => {
     if (e.target.checked == false) {
+      // Change Canvas Size
+      document.getElementById("design_api").style.width = "310px";
+
       $y_pos = "front";
       $("#preview_front").css(
         "background-image",
@@ -217,9 +228,19 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-side-color", "black");
       }, 100);
 
-      document.getElementById("form1").style.display = "block";
-      document.getElementById("form2").style.display = "none";
+      // document.getElementById("form1").style.display = "block";
+      // document.getElementById("form2").style.display = "none";
+
+      // Disabled Upload
+      document.getElementById("unggah_depan").setAttribute("enabled", "");
+      document.getElementById("unggah_samping").setAttribute("disabled", "");
+
+      document.getElementById("unggah_depan").removeAttribute("disabled", "");
+      document.getElementById("unggah_samping").removeAttribute("enabled", "");
     } else if (e.target.checked == true) {
+      // Change Canvas Size
+      document.getElementById("design_api").style.width = "240px";
+
       $y_pos = "side";
       $("#preview_side").css(
         "background-image",
@@ -249,8 +270,15 @@ $(document).ready(function () {
         switchButton.style.setProperty("--switch-front-color", "black");
       }, 100);
 
-      document.getElementById("form1").style.display = "none";
-      document.getElementById("form2").style.display = "block";
+      // document.getElementById("form1").style.display = "none";
+      // document.getElementById("form2").style.display = "block";
+
+      // Disabled Upload
+      document.getElementById("unggah_depan").setAttribute("disabled", "");
+      document.getElementById("unggah_samping").setAttribute("enabled", "");
+
+      document.getElementById("unggah_depan").removeAttribute("enabled", "");
+      document.getElementById("unggah_samping").removeAttribute("disabled", "");
     }
   });
 
@@ -312,8 +340,18 @@ $(document).ready(function () {
       capture();
       $(".layer").css("visibility", "visible");
 
-      document.getElementById("form1").style.display = "block";
-      document.getElementById("form2").style.display = "none";
+      // document.getElementById("form1").style.display = "block";
+      // document.getElementById("form2").style.display = "none";
+
+      // Disabled Upload
+      document.getElementById("unggah_depan").setAttribute("enabled", "");
+      document.getElementById("unggah_samping").setAttribute("disabled", "");
+
+      document.getElementById("unggah_depan").removeAttribute("disabled", "");
+      document.getElementById("unggah_samping").removeAttribute("enabled", "");
+
+      // Change Canvas Size
+      document.getElementById("design_api").style.width = "310px";
     } else {
       $("#error_tinjau").html(
         "<i>Anda belum menggungah gambar tampak depan atau samping!</i>"
@@ -382,7 +420,7 @@ function image_icon($srcimg) {
     });
   } else {
     $("." + $y_pos + "_print").append(
-      "<div id='wrapperIconTwo' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; width: 305px; height: 425px; overflow: hidden;'><img id='mapTwo' src='" +
+      "<div id='wrapperIconTwo' class='new_icon' onmouseover='show_delete_btn(this);' onmouseout='hide_delete_btn(this);' style='top:0px; left: 0px; width: 235px; height: 425px; overflow: hidden;'><img id='mapTwo' src='" +
         $srcimg +
         "' width='auto' height='430px' z-index='" +
         $nos_icons +
@@ -448,7 +486,7 @@ function keepOnTop() {
         $type +
         "/" +
         $type +
-        "_side.png' width='310px' height='430px' /></div>"
+        "_side.png' width='240px' height='430px' /></div>"
     );
     // Draggable Upload Image
     Draggable.create("#mapTwo", {
@@ -509,29 +547,3 @@ function validateFileType() {
     alert("Only jpg/jpeg and png files are allowed!");
   }
 }
-
-// function readURL(input) {
-//   if (input.files && input.files[0]) {
-//     var reader = new FileReader();
-//     reader.onload = function (e) {
-//       $("." + $y_pos + "_print").append(
-//         "<div id='c_icon" +
-//           $custom_img +
-//           "' class='new_icon'><span class='delete_icon' onClick='delete_icons(this);' ></span><img src='#' id='c_img" +
-//           $custom_img +
-//           "' width='100%' height='100%' /></div>"
-//       );
-//       $("#c_icon" + $custom_img + "").draggable({ containment: "parent" });
-//       // $("#c_icon" + $custom_img + "").resizable({
-//       //   maxHeight: 430,
-//       //   maxWidth: 310,
-//       //   minHeight: 60,
-//       //   minWidth: 60,
-//       // });
-
-//       $("#c_img" + $custom_img + "").attr("src", e.target.result);
-//       ++$custom_img;
-//     };
-//     reader.readAsDataURL(input.files[0]);
-//   }
-// }

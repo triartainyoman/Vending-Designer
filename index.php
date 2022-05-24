@@ -15,6 +15,10 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+		<!-- Sweet Alert -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 		<!-- Jquery -->
 		<script src="js/jquery-1.10.2.js">	</script>
 		<script src="js/bootstrap.js">		</script>

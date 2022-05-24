@@ -62,7 +62,7 @@
 		<!-- Side -->
 		<div class="col-md-4">
 			<h3>Kreasikan Vending Machine Anda!</h3>
-			<p class="upload-info">Ini adalah mock up simulasi <i>custom poster</i> pada Vending Machine yang Anda inginkan.</p>
+			<p class="upload-info">Ini adalah mock up simulasi <i>custom sticker</i> pada Vending Machine yang Anda inginkan.</p>
 			<h5>Tipe</h5>
 			<div class="custom-select">
 				<select name="vending-select" id="vending-select">
@@ -73,21 +73,21 @@
 			</div>
 			<div>
 				<form id="form1" runat="server">
-					<span class="btn btn-file btn-upload">
+					<span class="btn btn-file btn-upload" id="unggah_depan">
 						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
-						Unggah Gambar
+						Unggah Gambar Depan
 						<input type='file' id="imgInp" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
 					</span>
 				</form>
 				<form id="form2" runat="server">
-					<span class="btn btn-file btn-upload">
+					<span class="btn btn-file btn-upload" id="unggah_samping">
 						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
-						Unggah Gambar
+						Unggah Gambar Samping
 						<input type='file' id="imgInp2" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
 					</span>
 				</form>
 			</div>
-			<p class="upload-info">Disarankan untuk mengunggah gambar dengan ukuran <b>330 x 430 pixel</b> untuk tampilan depan dan <b>310 x 430 pixel</b> untuk tampilan samping.</p>
+			<p class="upload-info" style="margin-top: 20px;">Disarankan untuk mengunggah gambar dengan ukuran <b>310 x 430 pixel</b> untuk tampilan depan dan <b>240 x 430 pixel</b> untuk tampilan samping.</p>
 			<button class="btn-refresh-page" onClick="window.location.href=window.location.href">
 				<img src="tdesignAPI/images/icons/icon_reset.png" alt="Icon Reset">
 				<br>
@@ -97,7 +97,7 @@
 		
 		<!-- Main -->
 		<div class="col-md-4">
-			<div class='design_api'>
+			<div class='design_api' id="design_api">
 				<div id='preview_t'>
 					<div id="preview_front">
 						<div class="front_print">
@@ -168,23 +168,100 @@
 
 </div>
 <script>
-	function readURL(input) {
+	function readURL(input, val) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				image_icon(e.target.result);
-				keepOnTop();
+				//Initiate the JavaScript Image object.
+				var image = new Image();
+
+				//Set the Base64 string return from FileReader as source.
+				image.src = e.target.result;
+
+				//Validate the File Height and Width.
+				image.onload = function () {
+					var height = this.height;
+					var width = this.width;
+					if (val == 'imgInp1') {
+						if (height > 430 || width > 310) {
+							Swal.fire({
+								title: 'Lanjutkan Upload?',
+								text: "Gambar yang anda unggah akan disesuaikan karena lebih besar dari ukuran yang disarankan",
+								type: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Yes, upload it!'
+							}).then((result) => {
+								if (result.value) {
+									image_icon(e.target.result);
+									keepOnTop();
+									Swal.fire(
+										'Uploaded!',
+										'Gambar anda berhasil diunggah.',
+										'success'
+									)
+								}
+							})
+							return true;
+						} else if (height < 430 || width < 310) {
+							Swal.fire({
+								type: 'error',
+								title: 'Oops...',
+								text: 'Ukuran gambar yang anda unggah terlalu kecil dari ukuran yang disarankan!',
+							});
+							return false;
+						}
+					} else {
+						if (height > 430 || width > 240) {
+							Swal.fire({
+								title: 'Lanjutkan Upload?',
+								text: "Gambar yang anda unggah akan disesuaikan karena lebih besar dari ukuran yang disarankan",
+								type: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Yes, upload it!'
+							}).then((result) => {
+								if (result.value) {
+									image_icon(e.target.result);
+									keepOnTop();
+									Swal.fire(
+										'Uploaded!',
+										'Gambar anda berhasil diunggah.',
+										'success'
+									)
+								}
+							})
+							return true;
+						} else if (height < 430 || width < 240) {
+							Swal.fire({
+								type: 'error',
+								title: 'Oops...',
+								text: 'Ukuran gambar yang anda unggah terlalu kecil dari ukuran yang disarankan!',
+							});
+							return false;
+						}
+					}
+					Swal.fire(
+						'Uploaded!',
+						'Gambar anda berhasil diunggah.',
+						'success'
+					)
+					image_icon(e.target.result);
+					keepOnTop();
+				};
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
 
 	$("#imgInp").change(function() {
-		readURL(this);
+		readURL(this, value = 'imgInp1');
 	});
 
 	$("#imgInp2").change(function() {
-		readURL(this);
+		readURL(this, value = 'imgInp2');
 	});
 </script>
 

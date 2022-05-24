@@ -305,12 +305,19 @@ div.upload input {
   /* border-bottom: 1px solid #acacac;
   border-top: 1px solid #acacac; */
 }
-#preview_front,
-#preview_side {
+#preview_front {
   width: 310px;
   height: 430px;
   background-repeat: no-repeat;
   background-size: 310px 430px;
+  z-index: 100;
+}
+
+#preview_side {
+  width: 240px;
+  height: 430px;
+  background-repeat: no-repeat;
+  background-size: 240px 430px;
   z-index: 100;
 }
 .dis_none {
@@ -487,13 +494,13 @@ div.upload input {
 }
 
 .btn-upload {
-  width: 216px;
+  width: 260px;
   height: 45px;
   font-size: 16px;
   line-height: 29px;
   background: #bac4de;
-  margin-top: 48px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
 }
 
 .btn-upload:hover {
@@ -606,7 +613,7 @@ h5 {
   height: 75px;
   background-color: transparent;
   border: none;
-  margin-top: 45px;
+  margin-top: 25px;
   font-size: 20px;
 }
 
