@@ -75,14 +75,14 @@
 				<form id="form1" runat="server">
 					<span class="btn btn-file btn-upload" id="unggah_depan">
 						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
-						Unggah Gambar Depan
+						Gambar Depan
 						<input type='file' id="imgInp" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
 					</span>
 				</form>
 				<form id="form2" runat="server">
 					<span class="btn btn-file btn-upload" id="unggah_samping">
 						<img src="tdesignAPI/images/icons/icon_unggah.png" class="btn-upload-icon" alt="Icon Unggah">
-						Unggah Gambar Samping
+						Gambar Samping
 						<input type='file' id="imgInp2" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
 					</span>
 				</form>
