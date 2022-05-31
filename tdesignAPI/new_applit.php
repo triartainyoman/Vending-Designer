@@ -96,7 +96,7 @@
 		</div>
 		
 		<!-- Main -->
-		<div class="col-md-4">
+		<div class="col-md-4 main-side">
 			<div class='design_api' id="design_api">
 				<div id='preview_t'>
 					<div id="preview_front">
@@ -125,12 +125,16 @@
 		</div>
 		
 		<!-- Right -->
-		<div class="col-md-4" style="height: 430px; display: flex; flex-direction: column; justify-content: center;">
+		<div class="col-md-4 right-side">
 			<button type="button" class="btn-preview-images preview_images" id="preview_images" data-toggle="modal" data-target=".bs-example-modal-lg">
 					<img src="tdesignAPI/images/icons/icon_tinjau.png" alt="Icon Tinjau">
 					Pratinjau 
 			</button>
 			<p style="color: red; margin-top: 5px" id="error_tinjau"></p>
+
+			<button class="btn-refresh-page-two" onClick="window.location.href=window.location.href">
+				Atur Ulang
+			</button>
 		</div>
 	</div>
 
@@ -144,7 +148,7 @@
 			</div>
 			<div class="modal-body">
 
-				<div id="image_reply" style="display: flex; justify-content: space-evenly;"></div>
+				<div id="image_reply"></div>
 				<div style="display: flex; justify-content: center;" id="image_reply_desc">
 					<h3 style="margin-right: 25%;">Tampak Depan</h3>
 					<h3>Tampak Samping</h3>
