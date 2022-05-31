@@ -133,6 +133,7 @@
 			<p style="color: red; margin-top: 5px" id="error_tinjau"></p>
 
 			<button class="btn-refresh-page-two" onClick="window.location.href=window.location.href">
+				<img src="tdesignAPI/images/icons/icon_reset_white.png" alt="Icon Reset">
 				Atur Ulang
 			</button>
 		</div>
