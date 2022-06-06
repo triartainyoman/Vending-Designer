@@ -54,10 +54,24 @@
 		$('#custom_text').css("color", _color);
 	}
 </script>
-<div class="container design_api_container">
-	<div class="logo">
+<!-- Navigation bar -->
+<header class="header">
+	<!-- <a href="#" class="logo">LR</a> -->
+	<div class="container">
+	<a class="logo" href="https://www.smartven.biz">
 		<img class="logo-image" src="tdesignAPI/images/logo-smartven.png" alt="logo-smartven">
+	</a>
+	<input class="side-menu" type="checkbox" id="side-menu"/>
+	<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+	<nav class="nav">
+		<ul class="menu">
+			<li><a href="https://www.smartven.biz/harga-beli-vending-machine-indonesia" target="_blank">Harga</a></li>
+			<li><a href="https://www.smartven.biz/custom-vending-machine-indonesia" target="_blank">Portfolio</a></li>
+		</ul>
+	</nav>
 	</div>
+</header>
+<div class="container design_api_container">
 	<div class="row">
 		<!-- Side -->
 		<div class="col-md-4">
