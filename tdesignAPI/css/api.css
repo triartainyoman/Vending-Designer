@@ -560,7 +560,8 @@ div.upload input {
   line-height: 100px;
 }
 
-.menu li:first-child a {
+.menu li:first-child a,
+.menu li:nth-child(2) a {
   margin-right: 36px;
 }
 .menu a:hover {

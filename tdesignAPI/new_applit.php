@@ -65,6 +65,7 @@
 	<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
 	<nav class="nav">
 		<ul class="menu">
+			<li><a href="http://ui.ritramd.id/" target="_blank">Custom UI</a></li>
 			<li><a href="https://www.smartven.biz/harga-beli-vending-machine-indonesia" target="_blank">Harga</a></li>
 			<li><a href="https://www.smartven.biz/custom-vending-machine-indonesia" target="_blank">Portfolio</a></li>
 		</ul>
