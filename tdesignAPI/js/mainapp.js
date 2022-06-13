@@ -9,6 +9,31 @@ var $type = "smartven_analog",
   $upload_side = false,
   $number_back = 0;
 $(document).ready(function () {
+  // Export canvas image and convert to zip
+  $("#download").click(function () {
+    // $("#preview_idle").removeClass("dis_none");
+
+    function getBase64Image(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      var dataURL = canvas.toDataURL("image/png");
+      return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+
+    var img_front = getBase64Image(document.getElementById("canvas_front"));
+    var img_side = getBase64Image(document.getElementById("canvas_side"));
+
+    var zip = new JSZip();
+    zip.file("Tampak Depan.png", img_front, { base64: true });
+    zip.file("Tampak Samping.png", img_side, { base64: true });
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+      saveAs(content, "sticker-vending-design.zip");
+    });
+  });
+
   //ONLOAD
   $("#preview_front").css(
     "background-image",
@@ -378,12 +403,14 @@ $(document).ready(function () {
     $y_pos = "front";
     html2canvas($("#preview_front"), {
       onrendered: function (canvas) {
+        canvas.id = "canvas_front";
         document.getElementById("image_reply").appendChild(canvas);
         $("#img_front").val(canvas.toDataURL("image/png"));
       },
     });
     html2canvas($("#preview_side"), {
       onrendered: function (canvas) {
+        canvas.id = "canvas_side";
         document.getElementById("image_reply").appendChild(canvas);
         $("#img_back").val(canvas.toDataURL("image/png"));
         $("#preview_side").addClass("dis_none");

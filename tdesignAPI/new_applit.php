@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="tdesignAPI/css/jquery-ui.css" />
 <script src="tdesignAPI/js/jquery-ui.js"></script>
 
+<!-- Zip -->
+<script type="text/javascript" src="//stuk.github.io/jszip/dist/jszip.js"></script>
+<script type="text/javascript" src="//stuk.github.io/jszip-utils/dist/jszip-utils.js"></script>
+<script type="text/javascript" src="//stuk.github.io/jszip/vendor/FileSaver.js"></script>
+
 <script type="text/javascript">
 	function changeval() {
 		$total = parseInt($("#small").val()) + parseInt($("#medium").val()) + parseInt($("#large").val()) + parseInt($("#xlarge").val()) + parseInt($("#xxlarge").val());
@@ -172,6 +177,12 @@
 				<div class="modal-footer">
 					<div class="row">
 						<form method="POST" enctype="multipart/form-data" id="imageFileForm" action="checkout/checkout.php">
+							<div class="col-md-1">
+								<!-- <button type="button" class="btn btn-primary" id="download" onclick="exportImage()"> -->
+								<button type="button" class="btn btn-primary" id="download">
+									Export
+								</button>
+							</div>
 							<div class="col-md-1">
 								<button type="button" class="btn btn-danger close_img" data-dismiss="modal">
 									Kembali
